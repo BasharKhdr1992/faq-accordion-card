@@ -10,34 +10,34 @@ const FAQS = [
     id: uuidv4(),
     question: 'How many team members can I invite?',
     answer: `You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.`,
-    open: false,
+    maxHeight: 0,
   },
   {
     id: uuidv4(),
     question: 'What is the maximum file upload size?',
     answer:
       'No more than 2GB. All files in your account must fit your allotted storage space.',
-    open: false,
+    maxHeight: 0,
   },
   {
     id: uuidv4(),
     question: 'How do I reset my password?',
     answer: `Click “Forgot password” from the login page or “Change password” from your profile page. A reset link will be emailed to you.`,
-    open: false,
+    maxHeight: 0,
   },
   {
     id: uuidv4(),
     question: 'Can I cancel my subscription?',
     answer:
       'Yes! Send us a message and we’ll process your request no questions asked.',
-    open: false,
+    maxHeight: 0,
   },
   {
     id: uuidv4(),
     question: 'Do you provide additional support?',
     answer:
       'Chat and email support is available 24/7. Phone lines are open during normal business hours.',
-    open: false,
+    maxHeight: 0,
   },
 ];
 
@@ -55,12 +55,21 @@ const FAQ = () => {
     setFaqs(FAQS);
   }, []);
 
-  const toggleFAQ = (id) => {
+  const toggleFAQ = (e, id) => {
+    const panel = e.target.parentElement.nextSibling;
+
+    const maxHeight = `${panel.scrollHeight}px`;
     setFaqs((prev) => {
-      return prev.map((faq) => ({
-        ...faq,
-        open: faq.id === id ? !faq.open : faq.open,
-      }));
+      return prev.map((faq) => {
+        if (faq.id === id) {
+          return {
+            ...faq,
+            maxHeight: faq.maxHeight === 0 ? maxHeight : 0,
+          };
+        } else {
+          return faq;
+        }
+      });
     });
   };
 
@@ -82,7 +91,7 @@ const FAQ = () => {
           return (
             <div
               key={faq.id}
-              onClick={() => toggleFAQ(faq.id)}
+              onClick={(e) => toggleFAQ(e, faq.id)}
               className={`faq-wrapper ${index !== faqs.length - 1 && 'p-b'}`}
             >
               <div className="faq-header">
@@ -95,7 +104,7 @@ const FAQ = () => {
                   )}
                 </div>
               </div>
-              <p className={`faq-answer ${faq.open && 'faq-answer-show'}`}>
+              <p className={`faq-answer`} style={{ maxHeight: faq.maxHeight }}>
                 {faq.answer}
               </p>
               <Divider />

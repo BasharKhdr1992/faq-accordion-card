@@ -3,7 +3,7 @@ import './Appendix.css';
 
 const Appendix = () => {
   return (
-    <div class="attribution">
+    <div className="attribution">
       Challenge by{' '}
       <a
         href="https://www.frontendmentor.io?ref=challenge"
@@ -12,7 +12,7 @@ const Appendix = () => {
       >
         Frontend Mentor
       </a>
-      . Coded by <button href="#">Bashar Khdr</button>.
+      . Coded by <button>Bashar Khdr</button>.
     </div>
   );
 };
