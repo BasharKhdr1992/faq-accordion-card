@@ -61,7 +61,15 @@ const FAQ = () => {
   }, []);
 
   const toggleFAQ = (e, id) => {
-    const panel = e.target.parentElement.nextSibling;
+    let panel;
+
+    if (e.target.parentElement.className === 'faq-header-icon') {
+      panel = e.target.parentElement.parentElement.nextSibling;
+    } else {
+      panel = e.target.parentElement.nextSibling;
+    }
+
+    console.log(panel);
 
     const maxHeight = `${panel.scrollHeight}px`;
     setFaqs((prev) => {
@@ -97,10 +105,9 @@ const FAQ = () => {
           return (
             <div
               key={faq.id}
-              onClick={(e) => toggleFAQ(e, faq.id)}
               className={`faq-wrapper ${index !== faqs.length - 1 && 'p-b'}`}
             >
-              <div className="faq-header">
+              <div onClick={(e) => toggleFAQ(e, faq.id)} className="faq-header">
                 <RenderFAQHeader question={faq.question} open={faq.open} />
                 <div className="faq-header-icon">
                   {faq.open ? (
