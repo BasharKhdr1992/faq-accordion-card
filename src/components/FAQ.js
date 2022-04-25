@@ -11,6 +11,7 @@ const FAQS = [
     question: 'How many team members can I invite?',
     answer: `You can invite up to 2 additional users on the Free plan. There is no limit on team members for the Premium plan.`,
     maxHeight: 0,
+    open: false,
   },
   {
     id: uuidv4(),
@@ -18,12 +19,14 @@ const FAQS = [
     answer:
       'No more than 2GB. All files in your account must fit your allotted storage space.',
     maxHeight: 0,
+    open: false,
   },
   {
     id: uuidv4(),
     question: 'How do I reset my password?',
     answer: `Click “Forgot password” from the login page or “Change password” from your profile page. A reset link will be emailed to you.`,
     maxHeight: 0,
+    open: false,
   },
   {
     id: uuidv4(),
@@ -31,6 +34,7 @@ const FAQS = [
     answer:
       'Yes! Send us a message and we’ll process your request no questions asked.',
     maxHeight: 0,
+    open: false,
   },
   {
     id: uuidv4(),
@@ -38,12 +42,13 @@ const FAQS = [
     answer:
       'Chat and email support is available 24/7. Phone lines are open during normal business hours.',
     maxHeight: 0,
+    open: false,
   },
 ];
 
 const RenderFAQHeader = ({ open, question }) => {
   if (open) {
-    return <h3 className="faq-title">{question}</h3>;
+    return <h2 className="faq-title">{question}</h2>;
   }
   return <p className="faq-title">{question}</p>;
 };
@@ -65,6 +70,7 @@ const FAQ = () => {
           return {
             ...faq,
             maxHeight: faq.maxHeight === 0 ? maxHeight : 0,
+            open: !faq.open,
           };
         } else {
           return faq;
