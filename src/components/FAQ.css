@@ -1,0 +1,132 @@
+.faq {
+  display: flex;
+  width: 70%;
+  min-height: 70vh;
+  justify-content: space-between;
+  border-radius: 16px;
+  background-color: hsl(0, 0%, 98%);
+  box-shadow: 0px 4px 6px hsl(240, 73%, 65%);
+}
+
+.faq-text h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.faq-illustration {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  background-image: url('../assets/bg-pattern-desktop.svg');
+  background-repeat: no-repeat;
+  background-position: bottom -10em right 3em;
+}
+.faq-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  padding-top: 20px;
+  margin-left: 10%;
+}
+
+.img-wrapper {
+  position: relative;
+}
+
+.faq-illustration #woman-online {
+  width: 330px;
+  height: 300px;
+  object-fit: cover;
+  object-position: 100% 0;
+}
+
+#box {
+  position: absolute;
+  top: 32%;
+  left: -30%;
+}
+
+.faq-header {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.faq-header .faq-title {
+  width: 70%;
+  color: hsl(238, 29%, 16%);
+}
+
+.faq-header-icon {
+  text-align: center;
+  flex-grow: 1;
+  width: 20%;
+}
+.faq-header .faq-title:hover {
+  color: hsl(14, 88%, 65%);
+}
+
+.faq-answer {
+  width: 70%;
+  display: none;
+  color: hsl(237, 12%, 33%);
+}
+
+.faq-answer-show {
+  display: block;
+}
+
+.p-b {
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .faq {
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .faq-text h1 {
+    text-align: center;
+  }
+
+  .faq-illustration {
+    background-image: url('../assets/bg-pattern-mobile.svg');
+    background-position: top 20% right 50%;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .faq-illustration,
+  .faq-text {
+    width: 100%;
+  }
+
+  .faq-wrapper {
+    padding-top: 20px;
+    margin-left: 5%;
+  }
+
+  .faq-illustration #woman-online {
+    object-fit: contain;
+  }
+
+  .img-wrapper {
+    transform: translateY(-50%);
+  }
+
+  .faq-text {
+    margin-left: 0;
+    justify-content: space-around;
+    transform: translateY(-20%);
+  }
+
+  #box {
+    left: -5%;
+    max-width: 128px;
+    height: 128px;
+  }
+}
